@@ -1,0 +1,63 @@
+<UserControl x:Class="OpenCoreBuilder.UI.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:enums="clr-namespace:OpenCoreBuilder.Core.Enums;assembly=OpenCoreBuilder.Core">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="ThemeEnum"
+                MethodName="GetValues"
+                ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:AppTheme"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="TargetOSEnum"
+                MethodName="GetValues"
+                ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:TargetOS"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Settings"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Margin="0,0,0,20"/>
+
+            <TextBlock Text="Theme"
+                    FontWeight="Bold"
+                    Margin="0,10,0,5"/>
+            <ComboBox ItemsSource="{Binding Source={StaticResource ThemeEnum}}"
+                    SelectedItem="{Binding Settings.Theme}"
+                    Width="200"
+                    HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Default Target OS"
+                    FontWeight="Bold"
+                    Margin="0,10,0,5"/>
+            <ComboBox ItemsSource="{Binding Source={StaticResource TargetOSEnum}}"
+                    SelectedItem="{Binding Settings.DefaultTargetOS}"
+                    Width="200"
+                    HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Output Folder"
+                    FontWeight="Bold"
+                    Margin="0,10,0,5"/>
+            <TextBox Text="{Binding Settings.DefaultOutputFolder}"
+                    Width="400"
+                    HorizontalAlignment="Left"/>
+
+            <CheckBox Content="Strict Validation"
+                    IsChecked="{Binding Settings.StrictValidation}"
+                    Margin="0,20,0,0"/>
+
+            <Button Content="Save Settings"
+                    Command="{Binding SaveSettingsCommand}"
+                    HorizontalAlignment="Left"
+                    Width="150"
+                    Margin="0,20"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

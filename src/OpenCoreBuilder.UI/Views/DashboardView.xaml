@@ -1,0 +1,16 @@
+<UserControl x:Class="OpenCoreBuilder.UI.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            <TextBlock Text="{Binding WelcomeMessage}"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Center"/>
+            <TextBlock Text="Select a tab from the sidebar to begin."
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
